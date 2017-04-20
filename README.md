@@ -20,7 +20,9 @@ WP Invoker is pretty flexible, you can use Facades as provided by illuminate/sup
 
 use WPInvoker\Facades\Invoker;
 
-// as php function
+// as php function as below
+
+// invoke( $callback, $hook, $condition, $priority );
 
 invoke( 'AppController' );
 
@@ -34,7 +36,7 @@ invoke( function() {
 		
 	});
 
-}, 'wp', 'is_front_page' );
+}, 'wp', 'is_front_page', 80 );
 
 invoke( 'App\Controllers\SingleProductController', 'wp', 'is_product' );
 
