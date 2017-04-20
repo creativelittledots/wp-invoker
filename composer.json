@@ -20,7 +20,7 @@
 	"type": "library",
 	"autoload": {
         "psr-4": {
-            "WPInvoker\\": "src/WPInvoker" 
+            "WPKit\\Invoker\\": "src/Invoker" 
         },
         "files": [
             "src/helpers.php",
