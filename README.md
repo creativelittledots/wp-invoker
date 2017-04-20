@@ -22,6 +22,10 @@ use WPInvoker\Facades\Invoker;
 
 // as php function as below
 
+// $callback 	( string / array / callable )
+// $hook 		( string )
+// $condition 	( string / callable )
+// $priority 	( int )
 // invoke( $callback, $hook, $condition, $priority );
 
 invoke( 'AppController' );
