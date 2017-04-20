@@ -1,0 +1,38 @@
+{
+	"name": "creativelittledots/wp-invoker",
+	"description": "Wordpress PHP Component to help organise code in a scalable way.",
+	"keywords": ["wordpress", "framework", "oop", "invoker", "routing"],
+	"homepage" : "https://github.com/creativelittledots/wp-invoker",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Creative Little Dots",
+			"email" : "tech@creativelittledots.co.uk",
+			"homepage" : "https://creativelittledots.co.uk/",
+			"role" : "Developers"
+		}
+	],
+	"require": {
+        "php": ">=5.4.45",
+        "illuminate/http": "5.4",
+	    "illuminate/routing": "5.4"
+    },
+	"type": "library",
+	"autoload": {
+        "psr-4": {
+            "WPInvoker\\": "src/WPInvoker" 
+        },
+        "files": [
+            "src/helpers.php",
+            "src/defines.php"
+        ]
+    },
+    "config": {
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "dev",
+	"repositories": [
+	],
+	"scripts": {
+	}
+}
