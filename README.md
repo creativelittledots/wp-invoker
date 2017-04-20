@@ -12,7 +12,11 @@ Install via composer, always.
 composer require "creativelittledots/wp-invoker"
 ```
 
-## How to Use
+## Registering Service Provider
+
+Coming soon.
+
+## Invoking
 
 WP Invoker is pretty flexible, you can use Facades as provided by illuminate/support. You can reference a controller, the controller must correspond to the exact name-spaced path using prs-4 methodology.
 
@@ -65,6 +69,8 @@ Invoker::invoke( 'ShopController', 'wp', function() {
 } );
 
 ```
+
+## Controllers
 
 WP Invoker comes shipped with a controller that you can extend too to enable you to benefit from the enqueue scripts feature which helps to reduce the amount of code you need to write to output scripts and styles through wp_enqueue_scripts.
 
