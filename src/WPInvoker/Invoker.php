@@ -10,11 +10,6 @@
 	     * @var \WPKit\Application
 	     */
 	    protected $app;
-	    
-	     /**
-	     * @var array
-	     */
-	    protected $routes = array();
 
 		public function __construct(Container $container) {
 	    	

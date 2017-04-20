@@ -4,7 +4,7 @@ namespace WPInvoker;
 
 use Illuminate\Support\ServiceProvider;
 
-class RoutingServiceProvider extends ServiceProvider
+class InvokerServiceProvider extends ServiceProvider
 {
     
     /**
