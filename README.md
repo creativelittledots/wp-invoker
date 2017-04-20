@@ -4,6 +4,14 @@ This is a Wordpress PHP Component to help organise actions and filters in a scal
 
 WP Invoker is built on top of illuminate/container and illuminate/routing. It is fully compatible with themosis/framework and creativelittledots/wp-kit which is the intended use.
 
+## Installation
+
+Install via composer, always.
+
+```php
+composer require "creativelittledots/wp-invoker"
+```
+
 ## How to Use
 
 WP Invoker is pretty flexible, you can use Facades as provided by illuminate/support. You can reference a controller, the controller must correspond to the exact name-spaced path using prs-4 methodology.
