@@ -107,7 +107,7 @@
 			
 		}
 		
-		private function getScriptPath( $file ) {
+		protected function getScriptPath( $file ) {
     		
     		if( ! filter_var( $file , FILTER_VALIDATE_URL) === false ) {
         		
