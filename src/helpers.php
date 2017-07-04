@@ -26,9 +26,9 @@
 	        
 	        foreach( array_map( 'trim', explode(',', ASSET_DIRS) ) as $dir ) {
 	                    
-	            if( file_exists( THEME_DIR . DS . $dir . DS . $file ) ) {
+	            if( file_exists( get_stylesheet_directory() . DS . $dir . DS . $file ) ) {
 		            
-		            $path = $server_path ? THEME_DIR : THEME_URI;
+		            $path = $server_path ? get_stylesheet_directory() : get_stylesheet_directory_uri();
 	                
 	                return $path . DS . $dir . DS . $file;
 	                
