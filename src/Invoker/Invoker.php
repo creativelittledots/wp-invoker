@@ -22,7 +22,7 @@
 	    
 	    public function invokeByCondition( $callback, $action = 'wp', $condition = true, $priority = 10 ) {
 			
-			add_action( $action, function() use( $action, $route, $condition, $priority ) {
+			add_action( $action, function() use( $action, $callback, $condition, $priority ) {
 			
 				if( ( is_callable( $condition ) && call_user_func( $condition ) ) || ( ! is_callable( $condition ) && $condition ) ) {
 			
@@ -40,13 +40,11 @@
 		
 		public function forceInvoke( $callback, $action = 'wp', $priority = 10 ) {
 			
-			add_action( $action, function() use ( $route ) {
+			add_action( $action, function() use( $callback ) {
 									
 				app()->call( $this->getCallback( $callback ) );
 				
 			}, $priority );
-			
-			return $route;
 			
 		}
 	    
@@ -59,8 +57,6 @@
 	            	$callback .= '@dispatch';
 	            	
 	            }
-	            
-	            $callback = explode( $callback, '@' );
 	            
 	        }
 	

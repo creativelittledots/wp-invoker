@@ -12,12 +12,12 @@ class InvokerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerRouter()
+    public function register()
     {
         
         $this->app->instance(
             'invoker',
-            $this->app->make('WPKIt\Invoker\Invoker')
+            $this->app->make('WPKit\Invoker\Invoker')
         );
         
     }
