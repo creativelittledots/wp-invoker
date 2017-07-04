@@ -2,20 +2,7 @@
     
     namespace WPInvoker;
     
-    use Illuminate\Container\Container;
-    
     class Invoker {
-	    
-	    /**
-	     * @var \WPKit\Application
-	     */
-	    protected $app;
-
-		public function __construct(Container $container) {
-	    	
-	    	$this->container = $container;
-	    	
-	    }
 	    
 	    public function invoke( $callback, $action = 'wp', $condition = null, $priority = null ) {
 		    
@@ -41,7 +28,7 @@
 			
 					add_action( $action, function() use ( $callback ) {
 						
-						$this->container->call( $this->getCallback( $callback ) );
+						app()->call( $this->getCallback( $callback ) );
 						
 					}, $priority );
 				
@@ -55,7 +42,7 @@
 			
 			add_action( $action, function() use ( $route ) {
 									
-				$this->container->call( $this->getCallback( $callback ) );
+				app()->call( $this->getCallback( $callback ) );
 				
 			}, $priority );
 			

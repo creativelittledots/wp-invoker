@@ -1,27 +1,6 @@
 <?php
 	
-	use Illuminate\Container\Container;
 	use WPInvoker\Facades\Invoker;
-	
-	if ( ! function_exists('app') ) {
-		
-	    /**
-	     * Helper function to quickly retrieve an instance.
-	     *
-	     * @param null  $abstract   The abstract instance name.
-	     * @param array $parameters
-	     *
-	     * @return mixed
-	     */
-	    function app($abstract = null, array $parameters = [])
-	    {
-	        if (is_null($abstract)) {
-	            return Container::getInstance();
-	        }
-	        return Container::getInstance()->make($abstract, $parameters);
-	    }
-	    
-	}
 	
 	/*----------------------------------------------*\
     	#INVOKE FUNCTION

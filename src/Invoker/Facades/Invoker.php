@@ -2,7 +2,7 @@
 
 	namespace WPInvoker\Facades;
 	
-	use Illuminate\Support\Facades\Facade;
+	use Themosis\Facades\Facade;
 
 	class Invoker extends Facade {
 		
