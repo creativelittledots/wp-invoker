@@ -2,9 +2,8 @@
     
     namespace WPInvoker;
     
-    use Illuminate\Routing\Controller as BaseController;
+    use Themosis\Route\BaseController as BaseController;
     use Themosis\Facades\Asset;
-    use Illuminate\Container\Container;
     
     class Controller extends BaseController {
 	    
