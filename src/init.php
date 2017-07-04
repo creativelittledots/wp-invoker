@@ -56,5 +56,3 @@
 	    }
 	    
 	}
-	
-	app()->register(WPKit\Invoker\InvokerServiceProvider::class);
