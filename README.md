@@ -13,7 +13,7 @@ Controllers are invoked once, and once only during the lifecycle of the applicat
 Install via composer from the Themosis route folder:
 
 ```php
-composer require "creativelittledots/wp-invoker"
+composer require "wp-kit/invoker"
 ```
 
 ## Registering Service Provider
