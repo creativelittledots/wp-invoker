@@ -1,7 +1,22 @@
 <?php
 	
-	use WPKit\Invoker\Facades\Invoker;
 	
+	if ( ! defined('DS') ) {
+		
+	    define( 'DS', DIRECTORY_SEPARATOR );
+	    
+	}
+    
+    if( ! defined( 'ASSET_DIRS' ) ) {
+		
+		define( 'ASSET_DIRS', implode(',', [
+	        'styles',
+	        'scripts',
+	        'images'
+	    ] ) );
+		
+	}
+
 	/*----------------------------------------------*\
     	#INVOKE FUNCTION
     \*----------------------------------------------*/
@@ -10,7 +25,7 @@
     
 	    function invoke( $callback, $action = 'wp', $condition = null, $priority = null ) {
 		    
-		    return Invoker::invoke( $callback, $action, $condition, $priority );
+		    return WPKit\Invoker\Facades\Invoker::invoke( $callback, $action, $condition, $priority );
 		    
 	    }
 	    
@@ -41,3 +56,5 @@
 	    }
 	    
 	}
+	
+	app()->register(WPKit\Invoker\InvokerServiceProvider::class);

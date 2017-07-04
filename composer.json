@@ -21,8 +21,7 @@
             "WPKit\\Invoker\\": "src/Invoker" 
         },
         "files": [
-            "src/helpers.php",
-            "src/defines.php"
+            "src/init.php"
         ]
     },
     "config": {
