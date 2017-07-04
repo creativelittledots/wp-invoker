@@ -3,62 +3,27 @@
     namespace WPKit\Invoker;
     
     use Themosis\Route\BaseController as BaseController;
+    use Illuminate\Http\Request;
     use Themosis\Facades\Asset;
     
     class Controller extends BaseController {
 	    
 	    /**
-	     * @var Static
+	     * @var boolean
 	     */
-	    public static $instances = [];
+	    private $dispatched = false;
         
         /**
 	     * @var array
 	     */
         protected $scripts = [];
-        
-        /**
-	     * Instance function to return only once instance of the controller
-	     *
-	     * @return \WPKit\Core\Controller
-	     */
-        public function instance( $app ) {
-	        
-	        $class = get_called_class();
-	        
-	        if( empty( static::$instances[$class] ) ) {
-		        
-		        static::$instances[$class] = $app->make($class, func_get_args()); 
-		        
-	        }
-	        
-	        return static::$instances[$class];
-	        
-        }
 		
 		/**
 	     * Default controller action should the controller be invoked
 	     *
 	     * @return void
 	     */
-		public function dispatch() {
-			
-		}
-		
-		/**
-	     * Execute an action on the controller.
-	     *
-	     * @param  string  $method
-	     * @param  array   $parameters
-	     * @return \Symfony\Component\HttpFoundation\Response
-	     */
-	    public function callAction($method, $parameters) {
-		    
-		    call_user_func_array([$this, 'enqueueScripts'], $parameters);
-		    
-	        return call_user_func_array([$this, $method], $parameters);
-	        
-	    }
+		public function dispatch(Request $request) {}
         
         /**
 	     * Get scripts for controller
@@ -72,11 +37,22 @@
         }
         
         /**
+	     * Before filter method used before every action
+	     *
+	     * @return void
+	     */
+        public function beforeFilter(Request $request) {
+	        
+	        app()->call([$this, 'enqueueScripts'], ['request' => $request]);
+	        
+        }
+        
+        /**
 	     * Enqueue scripts for controller
 	     *
 	     * @return void
 	     */
-        public function enqueueScripts() {
+        public function enqueueScripts(Request $request) {
 	        
 			foreach($this->getScripts() as $script) {
 				
@@ -106,6 +82,11 @@
 			
 		}
 		
+		/**
+	     * Get script file url
+	     *
+	     * @return string
+	     */
 		protected function getScriptPath( $file ) {
     		
     		if( ! filter_var( $file , FILTER_VALIDATE_URL) === false ) {
