@@ -1,6 +1,6 @@
 <?php
     
-    namespace WPInvoker;
+    namespace WPKit\Invoker;
     
     use Themosis\Route\BaseController as BaseController;
     use Themosis\Facades\Asset;

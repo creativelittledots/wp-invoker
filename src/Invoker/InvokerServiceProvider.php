@@ -1,6 +1,6 @@
 <?php
 
-namespace WPInvoker;
+namespace WPKit\Invoker;
 
 use Illuminate\Support\ServiceProvider;
 

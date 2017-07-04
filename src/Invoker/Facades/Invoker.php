@@ -1,6 +1,6 @@
 <?php
 
-	namespace WPInvoker\Facades;
+	namespace WPKit\Invoker\Facades;
 	
 	use Themosis\Facades\Facade;
 
