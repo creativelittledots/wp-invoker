@@ -68,9 +68,9 @@ invoke( 'ShopController', 'wp', function() {
 
 Invoker::invoke( 'AppController' );
 
-Invoker::invoke( 'SingleProductController@someMethod', 'wp', 'is_product' );
+Invoker::match( 'SingleProductController@someMethod', 'wp', 'is_product' );
 
-Invoker::invoke( 'ShopController', 'wp', function() {
+Invoker::match( 'ShopController', 'wp', function() {
 
 	return is_shop() || is_post_type_archive( 'product') || is_tax( 'product_cat' ) || is_tax( 'product_tag' ) || is_tax( 'product_brand' ) || is_tax( 'company_portal' );
 	

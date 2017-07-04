@@ -8,7 +8,7 @@
     
 	    function invoke( $callback, $action = 'wp', $condition = null, $priority = null ) {
 		    
-		    return WPKit\Invoker\Facades\Invoker::invoke( $callback, $action, $condition, $priority );
+		    return WPKit\Invoker\Facades\Invoker::match( $callback, $action, $condition, $priority );
 		    
 	    }
 	    

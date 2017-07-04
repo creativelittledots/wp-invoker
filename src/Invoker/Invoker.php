@@ -12,17 +12,17 @@
 	    private static $invoked = [];
 	    
 	    /**
-	     * Invoke junction
+	     * Invoke match function
 	     *
 	     * @return void
 	     */
-	    public function invoke( $callback, $action = 'wp', $condition = null, $priority = null ) {
+	    public function match( $callback, $action = 'wp', $condition = null, $priority = null ) {
 		    
 		    $priority = is_null( $priority ) ? ( is_numeric( $condition ) ? $condition : 10 ) : $priority;
 		    
 		    if( is_null( $condition ) || $condition === $priority ) {
 			    
-			    $this->forceInvoke( $callback, $action, $priority );
+			    $this->invoke( $callback, $action, $priority );
 			    
 		    } else {
 			    
@@ -43,7 +43,7 @@
 			
 				if( ( is_callable( $condition ) && call_user_func( $condition ) ) || ( ! is_callable( $condition ) && $condition ) ) {
 					
-					$this->forceInvoke( $callback, $action, $priority );
+					$this->invoke( $callback, $action, $priority );
 				
 				}
 				
@@ -52,27 +52,31 @@
 		}
 		
 		/**
-	     * Force invoke
+	     * Invoke function
 	     *
 	     * @return void
 	     */
-		protected function forceInvoke( $callback, $action = 'wp', $priority = 10 ) {
+		public function invoke( $callback, $action = 'wp', $priority = 10 ) {
 			
 			$callback = $this->getCallback( $callback );
 			
-			if( ! $this->invoked( $callback ) ) {
+			if( ! is_string( $callback ) || ! $this->invoked( $callback ) ) {
 			
 				add_action( $action, function() use( $action, $callback ) {
 					
 					$request = Request::capture();
 					
-					$filter = implode( '@', [ explode( '@', $callback )[0], 'beforeFilter' ] );
-					
-					if( is_string( $callback ) && ! $this->invoked( $filter ) ) {
-					
-						app()->call( $filter, [ 'request' => $request ] );
+					if( is_string( $callback ) ) {
 						
-						$this->markAsInvoked( $filter, $action );
+						if( ! $this->invoked( $filter ) ) {
+							
+							$filter = implode( '@', [ explode( '@', $callback )[0], 'beforeFilter' ] );
+					
+							app()->call( $filter, [ 'request' => $request ] );
+							
+							$this->markAsInvoked( $filter, $action );
+							
+						}
 						
 					}
 					
@@ -80,7 +84,11 @@
 					
 				}, $priority );
 				
-				$this->markAsInvoked( $callback, $action );
+				if( is_string( $callback ) ) {
+				
+					$this->markAsInvoked( $callback, $action );
+					
+				}
 			
 			}
 			
