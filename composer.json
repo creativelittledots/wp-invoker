@@ -1,8 +1,8 @@
 {
-	"name": "creativelittledots/wp-invoker",
-	"description": "Wordpress PHP Component to help organise code in a scalable way.",
-	"keywords": ["wordpress", "framework", "oop", "invoker", "routing"],
-	"homepage" : "https://github.com/creativelittledots/wp-invoker",
+	"name": "wp-kit/invoker",
+	"description": "A Wordpress Themosis PHP Component to invoke Controllers",
+	"keywords": ["wordpress", "themosis", "oop", "invoker", "routing"],
+	"homepage" : "https://github.com/wp-kit/invoker",
 	"license": "MIT",
 	"authors": [
 		{
