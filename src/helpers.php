@@ -1,6 +1,6 @@
 <?php
 	
-	use WPInvoker\Facades\Invoker;
+	use WPKit\Invoker\Facades\Invoker;
 	
 	/*----------------------------------------------*\
     	#INVOKE FUNCTION
