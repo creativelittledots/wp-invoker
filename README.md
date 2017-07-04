@@ -1,10 +1,10 @@
-# WP Invoker
+# WPKit Invoker
 
 This is a Wordpress Themosis PHP Component to invoke Controllers based on conditions, hooks and closures. 
 
 Often, Themosis developers want to group their actions and filters in a more defined context but do not to use a traditional Controller, they would rather invoke a Controller based on a condition rather than a path. 
 
-Sure we can use Themosis Routes, but we cannot pass in Closures directly into the Route definition. With WP Invoker you can Invoke Controllers more easily.
+Sure we can use Themosis Routes, but we cannot pass in Closures directly into the Route definition. With WPKit Invoker you can Invoke Controllers more easily.
 
 ## Installation
 
@@ -24,7 +24,7 @@ app()->register(WPKit\Invoker\InvokerServiceProvider::class);
 
 ## Invoking
 
-WP Invoker is pretty flexible, you can use Facades as provided by Themosis\Facades. You can reference a Controller, the Controller must correspond to the exact name-spaced path using prs-4 methodology.
+WPKit Invoker is pretty flexible, you can use Facades as provided by Themosis\Facades. You can reference a Controller, the Controller must correspond to the exact name-spaced path using prs-4 methodology.
 
 ```php
 
@@ -78,7 +78,7 @@ Invoker::invoke( 'ShopController', 'wp', function() {
 
 ## Controllers
 
-WP Invoker comes shipped with a controller that you can extend too to enable you to benefit from the enqueue scripts feature which helps to reduce the amount of code you need to write to output scripts and styles through wp_enqueue_scripts.
+WPKit Invoker comes shipped with a controller that you can extend too to enable you to benefit from the enqueue scripts feature which helps to reduce the amount of code you need to write to output scripts and styles through wp_enqueue_scripts.
 
 ```php
 
