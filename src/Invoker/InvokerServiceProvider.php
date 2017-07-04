@@ -2,7 +2,7 @@
 
 namespace WPKit\Invoker;
 
-use Illuminate\Support\ServiceProvider;
+use Themosis\Foundation\ServiceProvider;
 
 class InvokerServiceProvider extends ServiceProvider
 {
@@ -17,7 +17,7 @@ class InvokerServiceProvider extends ServiceProvider
         
         $this->app->instance(
             'invoker',
-            $this->app->make('WPInvoker\Invoker', ['app' => $this->app])
+            $this->app->make('WPKIt\Invoker\Invoker')
         );
         
     }
