@@ -89,14 +89,14 @@ use WPKit\Invoker\Controller;
 class FrontPageController extends Controller {
 	
 	var $scripts = [
-    	'vendor/modernizr.min.js',
-    	'vendor/foundation.min.js',
-    	'vendor/autocomplete.min.js',
+    	'scripts/vendor/modernizr.min.js',
+    	'scripts/vendor/foundation.min.js',
+    	'scripts/vendor/autocomplete.min.js',
     	'app' => [
-    	    'file' => 'app.min.js'
+    	    'file' => 'scripts/app.min.js'
         ],
-    	'framework/foundation.min.css',
-    	'style.css',
+    	'scripts/framework/foundation.min.css',
+    	'styles/style.css',
 	];
 	
 	public function getScripts() {
@@ -118,15 +118,13 @@ class FrontPageController extends Controller {
 
 ```
 
-To set the asset directories that scripts and styles are loaded from just set this constant in functions.php
+To register asset locations that scripts and styles are loaded from add paths to the asset.finder library;
 
 ```php
 
-define( 'ASSET_DIRS', implode(',', [
-    'styles',
-    'scripts',
-    'images'
-] ) );
+container('asset.finder')->addPaths([
+    get_stylesheet_directory_uri() . '/some/folder/' => get_stylesheet_directory() . '/some/folder/'
+]);
 	    
 ```
 
@@ -138,4 +136,4 @@ PHP 5.6+
 
 ## License
 
-WP Kit Core is open-sourced software licensed under the MIT License.
+WPKit Invoker is open-sourced software licensed under the MIT License.
