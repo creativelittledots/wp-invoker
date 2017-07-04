@@ -1,6 +1,6 @@
 # WP Invoker
 
-This is a Wordpress Themosis PHP Component to help organise actions and filters in a scalable way. 
+This is a Wordpress Themosis PHP Component to invoke Controllers based on conditions, hooks and closures. 
 
 Often, Themosis developers want to group their actions and filters in a more defined context but do not to use a traditional Controller, they would rather invoke a Controller based on a condition rather than a path. 
 
