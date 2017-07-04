@@ -114,7 +114,7 @@
         		
             } 
             
-            else if( $file = get_asset( $file ) ) {
+            else if( $file = container('asset.finder')->find( $file ) ) {
              
                 return $file;
                 

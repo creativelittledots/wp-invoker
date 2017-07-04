@@ -1,12 +1,14 @@
 # WP Invoker
 
-This is a Wordpress PHP Component to help organise actions and filters in a scalable way. Often developers want to group their actions and filters in a more defined context. With WP Invoker you can create a controller, group all of your actions and filters within this contextual controller and invoke the controller at defined points in your application.
+This is a Wordpress Themosis PHP Component to help organise actions and filters in a scalable way. 
 
-WP Invoker is built on top of illuminate/container and illuminate/routing. It is fully compatible with themosis/framework and creativelittledots/wp-kit which is the intended use.
+Often, Themosis developers want to group their actions and filters in a more defined context but do not to use a traditional Controller, they would rather invoke a Controller based on a condition rather than a path. 
+
+Sure we can use Themosis Routes, but we cannot pass in Closures directly into the Route definition. With WP Invoker you can Invoke Controllers more easily.
 
 ## Installation
 
-Install via composer, always.
+Install via composer from the Themosis route folder:
 
 ```php
 composer require "creativelittledots/wp-invoker"
@@ -14,15 +16,19 @@ composer require "creativelittledots/wp-invoker"
 
 ## Registering Service Provider
 
-Coming soon.
+Just add the following line of code somewhere in your environment after Themosis has run. For example you could place this in functions.php of your theme.
+
+```php
+app()->register(WPKit\Invoker\InvokerServiceProvider::class);
+```
 
 ## Invoking
 
-WP Invoker is pretty flexible, you can use Facades as provided by illuminate/support. You can reference a controller, the controller must correspond to the exact name-spaced path using prs-4 methodology.
+WP Invoker is pretty flexible, you can use Facades as provided by Themosis\Facades. You can reference a Controller, the Controller must correspond to the exact name-spaced path using prs-4 methodology.
 
 ```php
 
-use WPInvoker\Facades\Invoker;
+use WPKit\Invoker\Facades\Invoker;
 
 // as php function as below
 
@@ -78,7 +84,7 @@ WP Invoker comes shipped with a controller that you can extend too to enable you
 
 namespace App\Controllers;
 
-use WPInvoker\Controller;
+use WPKit\Invoker\Controller;
 
 class FrontPageController extends Controller {
 	
