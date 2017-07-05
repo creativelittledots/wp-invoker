@@ -18,11 +18,43 @@ composer require "wp-kit/invoker"
 
 ## Registering Service Provider
 
-Just add the following line of code somewhere in your environment after Themosis has run. For example you could place this in functions.php of your theme.
+**Within Themosis Theme**
+
+Just add the following line of code in the providers config:
 
 ```php
-app()->register(WPKit\Invoker\InvokerServiceProvider::class);
+//inside themosis-theme/resource/config/providers.config.php
+
+return [
+    Theme\Providers\RoutingService::class,
+    WPKit\Invoker\InvokerServiceProvider::class
+];
 ```
+
+**Within functions.php**
+
+If you are just using this component standalone then add the following the functions.php
+
+```php
+// within functions.php
+
+// make sure composer has been installed
+if( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+	
+	wp_die('Composer has not been installed, try running composer', 'Dependancy Error');
+	
+}
+
+// Use composer to load the autoloader.
+require __DIR__ . '/vendor/autoload.php';
+
+$container = new Illuminate\Container\Container(); // create new app container
+
+$provider = new WPKit\Invoker\InvokerServiceProvider($container); // inject into service provider
+
+$provider->register(); //register service provider
+```
+
 
 ## Invoking
 
