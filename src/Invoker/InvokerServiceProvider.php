@@ -2,7 +2,7 @@
 
 namespace WPKit\Invoker;
 
-use Themosis\Foundation\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class InvokerServiceProvider extends ServiceProvider
 {

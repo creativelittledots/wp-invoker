@@ -2,7 +2,7 @@
 
 	namespace WPKit\Invoker\Facades;
 	
-	use Themosis\Facades\Facade;
+	use Illuminate\Support\Facades\Facade;
 
 	class Invoker extends Facade {
 		
