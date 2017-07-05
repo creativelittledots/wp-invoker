@@ -1,10 +1,10 @@
 # WPKit Invoker
 
-This is a Wordpress Themosis PHP Component to invoke Controllers based on any condition, hook and closure.
+This is a Wordpress PHP Component to invoke Controllers based on any condition, hook and closure. This PHP Component was built to run within an Illiminate Container so is perfect for frameworks such as Themosis.
 
-Often, Themosis developers want to group their actions and filters in a more defined context but do not to use a traditional Controller, they would rather invoke a Controller based on a condition rather than a path. 
+Often, Wordpress developers want to group their actions and filters in a more defined context but do not to use a traditional Controller, they would rather invoke a Controller based on a condition rather than a path. 
 
-Sure we can use Themosis Routes, but we cannot pass in Closures directly into the Route definition. With WPKit Invoker you can Invoke Controllers more easily.
+Sure if we are using Themosis we can use Themosis Routes, but we cannot pass in Closures directly into the Route condition. With WPKit Invoker you can Invoke Controllers more easily.
 
 Controllers are invoked once, and once only during the lifecycle of the application regardless of the condition, hook or closure.
 
@@ -66,8 +66,6 @@ invoke( 'ShopController', 'wp', function() {
 
 // using facade
 
-Invoker::invoke( 'AppController' );
-
 Invoker::match( 'SingleProductController@someMethod', 'wp', 'is_product' );
 
 Invoker::match( 'ShopController', 'wp', function() {
@@ -77,6 +75,8 @@ Invoker::match( 'ShopController', 'wp', function() {
 } );
 
 ```
+
+This may see back to front in terms of how Route::match works however we feel it is more intuitive to lead with the callback when using the Invoker.
 
 ## Controllers
 
@@ -118,16 +118,6 @@ class FrontPageController extends Controller {
 	
 }
 
-```
-
-To register asset locations that scripts and styles are loaded from add paths to the asset.finder library;
-
-```php
-
-container('asset.finder')->addPaths([
-    get_stylesheet_directory_uri() . '/some/folder/' => get_stylesheet_directory() . '/some/folder/'
-]);
-	    
 ```
 
 ## Requirements
