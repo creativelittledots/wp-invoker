@@ -56,7 +56,7 @@
 	     *
 	     * @return void
 	     */
-		public function invoke( $callback, $action = 'wp', $priority = 10 ) {
+		protected function invoke( $callback, $action = 'wp', $priority = 10 ) {
 			
 			$callback = $this->getCallback( $callback );
 			
