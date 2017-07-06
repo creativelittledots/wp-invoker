@@ -2,9 +2,9 @@
 
 This is a Wordpress PHP Component to invoke Controllers based on any condition, hook and closure. This PHP Component was built to run within an Illiminate Container so is perfect for frameworks such as Themosis.
 
-Often, Wordpress developers want to group their actions and filters in a more defined context but do not to use a traditional Controller, they would rather invoke a Controller based on a condition rather than a path. 
+Often, Wordpress developers want to group their actions and filters in a more defined context but do not want to use a traditional Controller and would rather invoke a Controller based on a condition rather than a path. 
 
-Sure if we are using Themosis we can use Themosis Routes, but we cannot pass in Closures directly into the Route condition. With WPKit Invoker you can Invoke Controllers more easily. 
+Sure, if we are using Themosis we can use Themosis Routes, but we cannot pass in Closures directly into the Route condition. With WPKit Invoker, you can Invoke Controllers more easily. 
 
 Routes also kill the request at the end of the Callback, however with the Invoker you are simply attaching a Callback or Controller to the process allowing Wordpress to continue it's request into its Templating Engine.
 
