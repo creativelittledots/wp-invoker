@@ -3,6 +3,7 @@
 namespace WPKit\Invoker;
 
 use Illuminate\Support\ServiceProvider;
+use WPKit\Invoker\Facades\Invoker as Facade;
 
 class InvokerServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,7 @@ class InvokerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-	    WPKit\Invoker\Facades\Invoker::setFacadeApplication($this->app);
+	    Facade::setFacadeApplication($this->app);
         
         $this->app->instance(
             'invoker',
