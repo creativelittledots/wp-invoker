@@ -54,6 +54,8 @@ $container = new Illuminate\Container\Container(); // create new app container
 
 $provider = new WPKit\Invoker\InvokerServiceProvider($container); // inject into service provider
 
+Illuminate\Support\Facades\Facade::setFacadeApplication($container);
+
 $provider->register(); //register service provider
 ```
 
