@@ -14,10 +14,11 @@ class InvokerServiceProvider extends ServiceProvider
      */
     public function register()
     {
+	    WPKit\Invoker\Facades\Invoker::setFacadeApplication($this->app);
         
         $this->app->instance(
             'invoker',
-            $this->app->make('WPKit\Invoker\Invoker')
+            $this->app->make(Invoker::class)
         );
         
     }

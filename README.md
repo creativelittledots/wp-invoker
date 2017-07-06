@@ -22,15 +22,25 @@ composer require "wp-kit/invoker"
 
 **Within Themosis Theme**
 
-Just add the following line of code in the providers config:
+Just register the service provider and facade in the providers config and theme config:
 
 ```php
-//inside themosis-theme/resource/config/providers.config.php
+//inside themosis-theme/resources/config/providers.config.php
 
 return [
-    Theme\Providers\RoutingService::class,
-    WPKit\Invoker\InvokerServiceProvider::class
+	WPKit\Invoker\InvokerServiceProvider::class, // make sure it's first
+    Theme\Providers\RoutingService::class
 ];
+```
+
+```php
+//inside themosis-theme/resource/config/theme.config.php
+
+'aliases' => [
+    //
+    'Invoker' => WPKit\Invoker\Facades\Invoker::class,
+    //
+]
 ```
 
 **Within functions.php**
@@ -53,8 +63,6 @@ require __DIR__ . '/vendor/autoload.php';
 $container = new Illuminate\Container\Container(); // create new app container
 
 $provider = new WPKit\Invoker\InvokerServiceProvider($container); // inject into service provider
-
-Illuminate\Support\Facades\Facade::setFacadeApplication($container);
 
 $provider->register(); //register service provider
 ```
