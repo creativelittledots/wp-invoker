@@ -2,14 +2,26 @@
     
     namespace WPKit\Invoker;
     
-    use Illuminate\Http\Request;
+    use Illuminate\Container\Container;
+    use Illuminate\Support\Facades\Input;
     
     class Invoker {
+	    
+	    /**
+	     * @var Illuminate\Container\Container
+	     */
+	    protected $app = null;
 	    
 	    /**
 	     * @var static array
 	     */
 	    private static $invoked = [];
+	    
+	    public function __construct(Container $app) {
+		    
+		    $this->app = $app;
+		    
+	    }
 	    
 	    /**
 	     * Invoke match function
@@ -64,15 +76,13 @@
 			
 				add_action( $action, function() use( $action, $callback ) {
 					
-					$request = Request::capture();
-					
 					if( is_string( $callback ) ) {
 						
 						if( ! $this->invoked( $filter ) ) {
 							
 							$filter = implode( '@', [ explode( '@', $callback )[0], 'beforeFilter' ] );
 					
-							app()->call( $filter, [ 'request' => $request ] );
+							$this->app->call( $filter, [ 'request' => $this->app->make( Input::class ) ] );
 							
 							$this->markAsInvoked( $filter, $action );
 							
@@ -80,7 +90,7 @@
 						
 					}
 					
-					app()->call( $callback, [ 'request' => $request ] );
+					$this->app->call( $callback, [ 'request' => $this->app->make( Input::class ) ] );
 					
 				}, $priority );
 				

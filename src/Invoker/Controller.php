@@ -3,7 +3,7 @@
     namespace WPKit\Invoker;
     
     use Illuminate\Routing\Controller as BaseController;
-    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Input;
     
     class Controller extends BaseController {
 	    
@@ -22,7 +22,7 @@
 	     *
 	     * @return void
 	     */
-		public function dispatch(Request $request) {}
+		public function dispatch(Input $request) {}
         
         /**
 	     * Get scripts for controller
@@ -40,7 +40,7 @@
 	     *
 	     * @return void
 	     */
-        public function beforeFilter(Request $request) {
+        public function beforeFilter(Input $request) {
 	        
 	        app()->call([$this, 'enqueueScripts'], ['request' => $request]);
 	        
@@ -51,7 +51,7 @@
 	     *
 	     * @return void
 	     */
-        public function enqueueScripts(Request $request) {
+        public function enqueueScripts(Input $request) {
 	        
 			foreach($this->getScripts() as $script) {
 				
