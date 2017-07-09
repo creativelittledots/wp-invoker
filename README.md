@@ -2,7 +2,7 @@
 
 This is a Wordpress PHP Component to invoke Controllers based on any condition, hook and closure. 
 
-This PHP Component was built to run within an Illiminate Container so is perfect for frameworks such as Themosis.
+This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
 
 Often, Wordpress developers want to group their actions and filters in a more defined context but do not want to use a traditional Controller and would rather invoke a Controller based on a condition rather than a path. 
 
