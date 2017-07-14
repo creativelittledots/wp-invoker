@@ -28,7 +28,7 @@
 		            
 	            $path = $server_path ? get_stylesheet_directory() : get_stylesheet_directory_uri();
                 
-                return $path . DS . $dir . DS . $file;
+                return $path . DS . $file;
                 
             }
 		    
