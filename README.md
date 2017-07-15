@@ -1,6 +1,6 @@
 # WPKit Invoker
 
-This is a Wordpress PHP Component to invoke Controllers based on any condition, hook and closure. 
+This is a Wordpress PHP Component that handles the invoking of callbacks to Closures or Controllers based on any condition, hook and closure. 
 
 This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
 
