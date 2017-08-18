@@ -1,20 +1,20 @@
 # wp-kit/invoker
 
-This is a Wordpress PHP Component that handles the invoking of callbacks to ```closures``` or ```controllers``` based on any condition, hook and closure. 
+This is a Wordpress PHP Component that handles the invoking of callbacks to closures or controllers based on any condition, hook and closure. 
 
 This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as ```Themosis```.
 
-Often, Wordpress developers want to group their actions and filters in a more defined context but do not want to use a traditional ```controller``` and would rather invoke a ```controller``` based on a condition rather than a path. 
+Often, Wordpress developers want to group their actions and filters in a more defined context but do not want to use a traditional controller and would rather invoke a controller based on a condition rather than a path. 
 
-Sure, if we are using ```Themosis``` we can use ```Routes```, but we cannot pass in ```closures``` directly into the ```Route``` condition. With WPKit Invoker, you can Invoke Controllers more easily. 
+Sure, if we are using ```Themosis``` we can use ```Routes```, but we cannot pass in closures directly into the ```Route``` condition. With ```wp-kit/invoker```, you can Invoke controllers more easily. 
 
-```Routes``` also kill the request at the end of the ```callback```, however with the ```wp-kit/invoker``` you are simply attaching a ```callback``` or a ```controller``` to the process allowing Wordpress to continue it's request into its templating engine.
+```Routes``` also kill the request at the end of the ```callback```, however with the ```wp-kit/invoker``` you are simply attaching a callback or a controller to the process allowing Wordpress to continue it's request into its templating engine.
 
-A ```controller``` is invoked once, and once only during the lifecycle of the application regardless of the condition, hook or ```closure```.
+A controller is invoked once, and once only during the lifecycle of the application regardless of the condition, hook or closure.
 
 ## Installation
 
-If you're using ```Themosis```, install via composer in the Themosis route folder, otherwise install in your theme folder:
+If you're using ```Themosis```, install via ```Composer``` in the root fo your ```Themosis``` installtion, otherwise install in your ```Composer``` driven theme folder:
 
 ```php
 composer require "wp-kit/invoker"
