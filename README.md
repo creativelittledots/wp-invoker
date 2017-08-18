@@ -8,7 +8,7 @@ Often, Wordpress developers want to group their actions and filters in a more de
 
 Sure, if we are using ```Themosis``` we can use ```Routes```, but we cannot pass in closures directly into the ```Route``` condition. With ```wp-kit/invoker```, you can Invoke controllers more easily. 
 
-```Routes``` also kill the request at the end of the ```callback```, however with the ```wp-kit/invoker``` you are simply attaching a callback or a controller to the process allowing Wordpress to continue it's request into its templating engine.
+```Routes``` also kill the request at the end of the callback, however with the ```wp-kit/invoker``` you are simply attaching a callback or a controller to the process allowing Wordpress to continue it's request into its templating engine.
 
 A controller is invoked once, and once only during the lifecycle of the application regardless of the condition, hook or closure.
 
