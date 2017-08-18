@@ -1,26 +1,28 @@
-# WPKit Invoker
+# wp-kit/invoker
 
-This is a Wordpress PHP Component that handles the invoking of callbacks to Closures or Controllers based on any condition, hook and closure. 
+This is a Wordpress PHP Component that handles the invoking of callbacks to ```closures``` or ```controllers``` based on any condition, hook and closure. 
 
-This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
+This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as ```Themosis```.
 
-Often, Wordpress developers want to group their actions and filters in a more defined context but do not want to use a traditional Controller and would rather invoke a Controller based on a condition rather than a path. 
+Often, Wordpress developers want to group their actions and filters in a more defined context but do not want to use a traditional ```controller``` and would rather invoke a ```controller``` based on a condition rather than a path. 
 
-Sure, if we are using Themosis we can use Themosis Routes, but we cannot pass in Closures directly into the Route condition. With WPKit Invoker, you can Invoke Controllers more easily. 
+Sure, if we are using ```Themosis``` we can use ```Routes```, but we cannot pass in ```closures``` directly into the ```Route``` condition. With WPKit Invoker, you can Invoke Controllers more easily. 
 
-Routes also kill the request at the end of the Callback, however with the Invoker you are simply attaching a Callback or Controller to the process allowing Wordpress to continue it's request into its Templating Engine.
+```Routes``` also kill the request at the end of the ```callback```, however with the ```wp-kit/invoker``` you are simply attaching a ```callback``` or a ```controller``` to the process allowing Wordpress to continue it's request into its templating engine.
 
-Controllers are invoked once, and once only during the lifecycle of the application regardless of the condition, hook or closure.
+A ```controller``` is invoked once, and once only during the lifecycle of the application regardless of the condition, hook or ```closure```.
 
 ## Installation
 
-If you're using Themosis, install via composer in the Themosis route folder, otherwise install in your theme folder:
+If you're using ```Themosis```, install via composer in the Themosis route folder, otherwise install in your theme folder:
 
 ```php
 composer require "wp-kit/invoker"
 ```
 
-## Registering Service Provider
+## Setup
+
+### Add Service Provider
 
 **Within Themosis Theme**
 
@@ -47,7 +49,7 @@ return [
 
 **Within functions.php**
 
-If you are just using this component standalone then add the following the functions.php
+If you are just using this component standalone then add the following the ```functions.php```
 
 ```php
 // within functions.php
@@ -69,10 +71,21 @@ $provider = new WPKit\Invoker\InvokerServiceProvider($container); // inject into
 $provider->register(); //register service provider
 ```
 
+### Add Facade (Themosis Only)
 
-## Invoking
+```php
+//inside themosis-theme/resource/config/theme.config.php
 
-WPKit Invoker is pretty flexible, you can use Facades as provided by Themosis\Facades. You can reference a Controller, the Controller must correspond to the exact name-spaced path using prs-4 methodology.
+'aliases' => [
+    //
+    'Invoker' => WPKit\Invoker\Facades\Invoker::class,
+    //
+]
+```
+
+## How To Use
+
+### Invoking
 
 ```php
 
@@ -124,9 +137,9 @@ Invoker::match( 'ShopController', 'wp', function() {
 
 This may see back to front in terms of how Route::match works however we feel it is more intuitive to lead with the callback when using the Invoker.
 
-## Controllers
+### Controllers
 
-WPKit Invoker comes shipped with a controller that you can extend too to enable you to benefit from the enqueue scripts feature which helps to reduce the amount of code you need to write to output scripts and styles through wp_enqueue_scripts.
+```wp-kit/invoker``` comes shipped with a ```controller``` that you can extend too to enable you to benefit from the enqueue scripts feature which helps to reduce the amount of code you need to write to output scripts and styles through ```wp_enqueue_scripts```.
 
 ```php
 
@@ -174,4 +187,4 @@ PHP 5.6+
 
 ## License
 
-WPKit Invoker is open-sourced software licensed under the MIT License.
+wp-kit/invoker is open-sourced software licensed under the MIT License.
