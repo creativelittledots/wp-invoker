@@ -4,11 +4,11 @@ This is a Wordpress PHP Component that handles the invoking of callbacks to clos
 
 This PHP Component was built to run within an [```Illuminate\Container\Container```](https://github.com/illuminate/container/blob/master/Container.php) so is perfect for frameworks such as [```Themosis```](http://framework.themosis.com/).
 
-Often, Wordpress developers want to group their [actions and filters](https://codex.wordpress.org/Plugin_API) in a more defined context but do not want to use a traditional controller and would rather invoke a controller based on a condition rather than a path. 
+Often, Wordpress developers want to group their [actions and filters](https://codex.wordpress.org/Plugin_API) in a more defined context but do not want to use a traditional Controller and would rather invoke a Controller based on a condition rather than a path. 
 
 Sure, if we are using ```Themosis``` we can use [```Routes```](http://framework.themosis.com/docs/master/routing/), but we cannot pass in closures directly into the ```Route``` condition. With ```wp-kit/invoker```, you can Invoke controllers more easily. Examples are below.
 
-Lastly, a ```Controller``` is invoked once, and once only during the lifecycle of the application regardless of the condition, hook or closure.
+Lastly, as expected a [```Controller```](http://framework.themosis.com/docs/master/controllers/) is invoked once, and once only during the lifecycle of the application regardless of if the condition to invoke a ```Controller``` is met several times.
 
 ## Installation
 
