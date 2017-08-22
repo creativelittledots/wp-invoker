@@ -2,17 +2,17 @@
 
 This is a Wordpress PHP Component that handles the invoking of callbacks to closures or controllers based on any condition, hook and closure. 
 
-This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as ```Themosis```.
+This PHP Component was built to run within an [```Illuminate\Container\Container```](https://github.com/illuminate/container/blob/master/Container.php) so is perfect for frameworks such as [```Themosis```](http://framework.themosis.com/).
 
-Often, Wordpress developers want to group their actions and filters in a more defined context but do not want to use a traditional controller and would rather invoke a controller based on a condition rather than a path. 
+Often, Wordpress developers want to group their [actions and filters](https://codex.wordpress.org/Plugin_API) in a more defined context but do not want to use a traditional controller and would rather invoke a controller based on a condition rather than a path. 
 
-Sure, if we are using ```Themosis``` we can use ```Routes```, but we cannot pass in closures directly into the ```Route``` condition. With ```wp-kit/invoker```, you can Invoke controllers more easily. 
+Sure, if we are using ```Themosis``` we can use [```Routes```](http://framework.themosis.com/docs/master/routing/), but we cannot pass in closures directly into the ```Route``` condition. With ```wp-kit/invoker```, you can Invoke controllers more easily. Examples are below.
 
-A controller is invoked once, and once only during the lifecycle of the application regardless of the condition, hook or closure.
+Lastly, a ```Controller``` is invoked once, and once only during the lifecycle of the application regardless of the condition, hook or closure.
 
 ## Installation
 
-If you're using ```Themosis```, install via ```Composer``` in the root fo your ```Themosis``` installtion, otherwise install in your ```Composer``` driven theme folder:
+If you're using ```Themosis```, install via [```Composer```](https://getcomposer.org/) in the root fo your ```Themosis``` installtion, otherwise install in your ```Composer``` driven theme folder:
 
 ```php
 composer require "wp-kit/invoker"
@@ -133,11 +133,11 @@ Invoker::match( 'ShopController', 'wp', function() {
 
 ```
 
-This may see back to front in terms of how Route::match works however we feel it is more intuitive to lead with the callback when using the Invoker.
+This may see back to front in terms of how [```Router::match```](https://github.com/illuminate/routing/blob/master/Router.php#L255) works however we feel it is more intuitive to lead with the callback when using the Invoker.
 
 ### Controllers
 
-```wp-kit/invoker``` comes shipped with a ```controller``` that you can extend too to enable you to benefit from the enqueue scripts feature which helps to reduce the amount of code you need to write to output scripts and styles through ```wp_enqueue_scripts```.
+```wp-kit/invoker``` comes shipped with a [```Controller```](https://github.com/wp-kit/invoker/blob/master/src/Invoker/Controller.php) that you can extend too to enable you to benefit from the enqueue scripts feature which helps to reduce the amount of code you need to write to output scripts and styles through ```wp_enqueue_scripts```.
 
 ```php
 
