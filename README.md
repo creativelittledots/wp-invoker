@@ -81,6 +81,22 @@ $provider->register(); //register service provider
 ]
 ```
 
+### Add Config File
+
+The recommended method of installing config files for ```wp-kit``` Components is via ```wp-kit/vendor-publish``` command.
+
+First, [install WP CLI](http://wp-cli.org/), and then install the package via:
+
+```wp package install wp-kit/vendor-publish```
+
+Once installed you can run:
+
+```wp kit vendor:publish```
+
+For more information, please visit [wp-kit/vendor-publish](https://github.com/wp-kit/vendor-publish).
+
+Alternatively, you can place the [config file(s)](config) in your ```theme/resources/config``` directory manually.
+
 ## How To Use
 
 ### Invoking
