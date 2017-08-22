@@ -2,10 +2,16 @@
     
     namespace WPKit\Invoker;
     
+    use Illuminate\Contracts\Container\Container;
     use Illuminate\Routing\Controller as BaseController;
     use Illuminate\Support\Facades\Input;
     
     class Controller extends BaseController {
+	    
+	    /**
+	     * @var Illuminate\Contracts\Container\Container
+	     */
+	    protected $app = null;
 	    
 	    /**
 	     * @var boolean
@@ -16,6 +22,12 @@
 	     * @var array
 	     */
         protected $scripts = [];
+        
+        public function __construct(Container $app) {
+	        
+	        $this->app = $app;
+	        
+        }
 		
 		/**
 	     * Default controller action should the controller be invoked
@@ -42,7 +54,7 @@
 	     */
         public function beforeFilter(Input $request) {
 	        
-	        app()->call([$this, 'enqueueScripts'], ['request' => $request]);
+	        $this->app->call([$this, 'enqueueScripts'], ['request' => $request]);
 	        
         }
         
@@ -159,7 +171,7 @@
         		
             } 
             
-            else if( $file = container('asset.finder')->find( $file ) ) {
+            else if( $file = get_asset( $file ) ) {
              
                 return $file;
                 

@@ -2,13 +2,13 @@
     
     namespace WPKit\Invoker;
     
-    use Illuminate\Container\Container;
+    use Illuminate\Contracts\Container\Container;
     use Illuminate\Support\Facades\Input;
     
     class Invoker {
 	    
 	    /**
-	     * @var Illuminate\Container\Container
+	     * @var Illuminate\Contracts\Container\Container
 	     */
 	    protected $app = null;
 	    
@@ -78,9 +78,11 @@
 					
 					if( is_string( $callback ) ) {
 						
+						$callback = $this->prependNamespace( $callback );
+						
+						$filter = implode( '@', [ explode( '@', $callback )[0], 'beforeFilter' ] );
+						
 						if( ! $this->invoked( $filter ) ) {
-							
-							$filter = implode( '@', [ explode( '@', $callback )[0], 'beforeFilter' ] );
 					
 							$this->app->call( $filter, [ 'request' => $this->app->make( Input::class ) ] );
 							
@@ -101,6 +103,22 @@
 				}
 			
 			}
+			
+		}
+		
+		protected function prependNamespace( $callback ) {
+			
+			if( is_string( $callback ) && strpos($callback, '\\') !== 0 ) {
+				
+				$config = $this->app['config.factory']->get('invoker');
+				
+				$parts = explode( '@', $callback );
+				$parts[0] =  $config['namespace'] . '\\' . $parts[0];
+				$callback = implode( '@', $parts );
+
+			} 
+			
+			return $callback;
 			
 		}
 		
