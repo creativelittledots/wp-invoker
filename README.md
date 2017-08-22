@@ -8,7 +8,7 @@ Often, Wordpress developers want to group their [actions and filters](https://co
 
 Sure, if we are using ```Themosis``` we can use [```Routes```](http://framework.themosis.com/docs/master/routing/), but we cannot pass in closures directly into the ```Route``` condition. With ```wp-kit/invoker```, you can Invoke controllers more easily. Examples are below.
 
-Lastly, as expected a [```Controller```](http://framework.themosis.com/docs/master/controllers/) is invoked once, and once only during the lifecycle of the application regardless of if the condition to invoke a ```Controller``` is met several times.
+Lastly, as expected a [```Controller```](http://framework.themosis.com/docs/master/controllers/) is invoked once, and once only during the lifecycle of the application regardless of the number of times the condition is met to invoke the ```Controller```.
 
 ## Installation
 
