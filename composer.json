@@ -1,6 +1,6 @@
 {
 	"name": "wp-kit/invoker",
-	"description": "A Wordpress PHP Component that handles the invoking of callbacks",
+	"description": "A wp-kit component that handles the invoking of controllers and closures",
 	"keywords": ["wordpress", "themosis", "oop", "invoker", "routing"],
 	"homepage" : "https://github.com/wp-kit/invoker",
 	"license": "MIT",
