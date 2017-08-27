@@ -1,14 +1,14 @@
 # wp-kit/invoker
 
-This is a Wordpress PHP Component that handles the invoking of callbacks to closures or controllers based on any condition, hook and closure. 
+This is a wp-kit component that handles the invoking of controllers and closures based on a condition. 
 
-This PHP Component was built to run within an [```Illuminate\Container\Container```](https://github.com/illuminate/container/blob/master/Container.php) so is perfect for frameworks such as [```Themosis```](http://framework.themosis.com/).
+This component was built to run within an [```Illuminate\Container\Container```](https://github.com/illuminate/container/blob/master/Container.php) so is perfect for frameworks such as [```Themosis```](http://framework.themosis.com/), [```Assely```](https://assely.org/) and [```wp-kit/theme```](https://github.com/wp-kit/theme).
 
-Often, Wordpress developers want to group their [actions and filters](https://codex.wordpress.org/Plugin_API) in a more defined context but do not want to use a traditional Controller and would rather invoke a Controller based on a condition rather than a path. 
+Often, WordPress developers want to group their [actions and filters](https://codex.wordpress.org/Plugin_API) in a more defined context but do not want to use a traditional controller and would rather invoke a controller based on a condition rather than a path. 
 
-Sure, if we are using ```Themosis``` we can use [```Routes```](http://framework.themosis.com/docs/master/routing/), but we cannot pass in closures directly into the ```Route``` condition. With ```wp-kit/invoker```, you can Invoke controllers more easily. Examples are below.
+Sure, if we are using ```Themosis``` we can use [```Routes```](http://framework.themosis.com/docs/master/routing/), but we cannot pass in closures directly into the ```Route``` condition. With ```wp-kit/invoker```, you can invoke controllers more easily. Examples are below.
 
-Lastly, as expected a [```Controller```](http://framework.themosis.com/docs/master/controllers/) is invoked once, and once only during the lifecycle of the application regardless of the number of times the condition is met to invoke the ```Controller```.
+Lastly, as expected a [```Controller```](https://github.com/wp-kit/invoker/blob/master/src/Invoker/Controller.php) is invoked once, and once only during the lifecycle of the application regardless of the number of times the condition is met to invoke the ```Controller```.
 
 ## Installation
 
@@ -22,12 +22,10 @@ composer require "wp-kit/invoker"
 
 ### Add Service Provider
 
-**Within Themosis Theme**
-
 Just register the service provider and facade in the providers config and theme config:
 
 ```php
-//inside themosis-theme/resources/config/providers.config.php
+//inside theme/resources/config/providers.config.php
 
 return [
 	WPKit\Invoker\InvokerServiceProvider::class, // make sure it's first
@@ -35,44 +33,12 @@ return [
 ];
 ```
 
-```php
-//inside themosis-theme/resource/config/theme.config.php
+### Add Facade
 
-'aliases' => [
-    //
-    'Invoker' => WPKit\Invoker\Facades\Invoker::class,
-    //
-]
-```
-
-**Within functions.php**
-
-If you are just using this component standalone then add the following the ```functions.php```
+If you are using Themosis or another ```Iluminate``` driven framework, you may want to add ```Facades```, simply add them to your aliases:
 
 ```php
-// within functions.php
-
-// make sure composer has been installed
-if( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-	
-	wp_die('Composer has not been installed, try running composer', 'Dependancy Error');
-	
-}
-
-// Use composer to load the autoloader.
-require __DIR__ . '/vendor/autoload.php';
-
-$container = new Illuminate\Container\Container(); // create new app container
-
-$provider = new WPKit\Invoker\InvokerServiceProvider($container); // inject into service provider
-
-$provider->register(); //register service provider
-```
-
-### Add Facade (Themosis Only)
-
-```php
-//inside themosis-theme/resource/config/theme.config.php
+//inside theme/resource/config/theme.config.php
 
 'aliases' => [
     //
