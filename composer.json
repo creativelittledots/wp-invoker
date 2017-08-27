@@ -1,7 +1,7 @@
 {
 	"name": "wp-kit/invoker",
 	"description": "A wp-kit component that handles the invoking of controllers and closures",
-	"keywords": ["wordpress", "themosis", "oop", "invoker", "routing"],
+	"keywords": ["wordpress", "themosis", "assely", "wp-kit", "oop", "invoker", "routing"],
 	"homepage" : "https://github.com/wp-kit/invoker",
 	"license": "MIT",
 	"authors": [
