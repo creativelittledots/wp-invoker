@@ -49,17 +49,13 @@ If you are using Themosis or another ```Iluminate``` driven framework, you may w
 
 ### Add Config File
 
-The recommended method of installing config files for ```wp-kit``` Components is via ```wp-kit/vendor-publish``` command.
+The recommended method of installing config files for ```wp-kit``` components is via ```wp kit vendor:publish``` command.
 
-First, [install WP CLI](http://wp-cli.org/), and then install the package via:
-
-```wp package install wp-kit/vendor-publish```
-
-Once installed you can run:
+First, [install WP CLI](http://wp-cli.org/), and then install this component, ```wp kit vendor:publish``` will automatically be installed with ```wp-kit/utils```, once installed you can run:
 
 ```wp kit vendor:publish```
 
-For more information, please visit [wp-kit/vendor-publish](https://github.com/wp-kit/vendor-publish).
+For more information, please visit [```wp-kit/utils```](https://github.com/wp-kit/utils#commands).
 
 Alternatively, you can place the [config file(s)](config) in your ```theme/resources/config``` directory manually.
 
