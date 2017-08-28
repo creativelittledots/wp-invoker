@@ -23,6 +23,12 @@
 	     */
         protected $scripts = [];
         
+        /**
+	     * Controller constructor
+	     *
+	     * @param  \Illuminate\Contracts\Container\Container  $app
+	     * @return void
+	     */
         public function __construct(Container $app) {
 	        
 	        $this->app = $app;

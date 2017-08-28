@@ -17,6 +17,12 @@
 	     */
 	    private static $invoked = [];
 	    
+	    /**
+	     * Controller constructor
+	     *
+	     * @param  \Illuminate\Contracts\Container\Container  $app
+	     * @return void
+	     */
 	    public function __construct(Container $app) {
 		    
 		    $this->app = $app;
@@ -106,6 +112,12 @@
 			
 		}
 		
+		/**
+	     * Prepend namespace to route string
+	     *
+	     * @param  string  $callback
+	     * @return string
+	     */
 		protected function prependNamespace( $callback ) {
 			
 			if( is_string( $callback ) && strpos($callback, '\\') !== 0 ) {
