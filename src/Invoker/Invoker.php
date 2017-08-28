@@ -18,7 +18,7 @@
 	    private static $invoked = [];
 	    
 	    /**
-	     * Controller constructor
+	     * The constructor
 	     *
 	     * @param  \Illuminate\Contracts\Container\Container  $app
 	     * @return void
