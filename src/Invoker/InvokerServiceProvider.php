@@ -9,6 +9,19 @@ use Themosis\Facades\Input;
 
 class InvokerServiceProvider extends ServiceProvider
 {
+	
+	/**
+	     * Boot the service provider.
+	     *
+	     * @return void
+	     */
+		public function boot() {
+			
+			$this->publishes([
+				__DIR__.'/../../config/invoker.config.php' => config_path('invoker.config.php')
+			], 'config');
+		
+		}
     
     /**
      * Register the router instance.
