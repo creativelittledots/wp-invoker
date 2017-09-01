@@ -22,6 +22,13 @@
 	     * @var array
 	     */
         protected $scripts = [];
+	    
+	    /**
+	     * @var string
+	     */
+	    private $scripts_actions = 'wp_enqueue_scripts';
+        
+        /**
         
         /**
 	     * Controller constructor
@@ -59,8 +66,8 @@
 	     * @return void
 	     */
         public function beforeFilter(Input $request) {
-	        
-	        $this->app->call([$this, 'enqueueScripts'], ['request' => $request]);
+		
+		add_action( $this->scripts_actions, [$this, 'enqueueScripts'] );
 	        
         }
         
@@ -69,7 +76,7 @@
 	     *
 	     * @return void
 	     */
-        public function enqueueScripts(Input $request) {
+        public function enqueueScripts() {
 	        
 			foreach($this->getScripts() as $script) {
 				
