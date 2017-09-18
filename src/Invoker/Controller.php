@@ -12,11 +12,6 @@
 	     * @var Illuminate\Contracts\Container\Container
 	     */
 	    protected $app = null;
-	    
-	    /**
-	     * @var boolean
-	     */
-	    private $dispatched = false;
         
         /**
 	     * @var array
@@ -26,7 +21,7 @@
 	    /**
 	     * @var string
 	     */
-	    private $scripts_actions = 'wp_enqueue_scripts';
+	    protected $scripts_action = 'wp_enqueue_scripts';
         
         /**
         
@@ -67,7 +62,7 @@
 	     */
         public function beforeFilter(Input $request) {
 		
-		add_action( $this->scripts_actions, [$this, 'enqueueScripts'] );
+			add_action( $this->scripts_action, [$this, 'enqueueScripts'] );
 	        
         }
         
