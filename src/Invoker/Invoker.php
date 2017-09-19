@@ -118,7 +118,7 @@
 	     * @param  string  $callback
 	     * @return string
 	     */
-		protected function prependNamespace( $callback ) {
+		public function prependNamespace( $callback ) {
 			
 			if( is_string( $callback ) && strpos($callback, '\\') !== 0 ) {
 				
