@@ -90,7 +90,7 @@
 				
 				if( is_string( $callback ) ) {
 				
-					$this->markAsInvoked( $callback, $action );
+					$this->markAsInvoked( $callback );
 					
 				}
 			
@@ -138,7 +138,7 @@
 			
 					$this->app->call( $filter, [ 'request' => $this->app->make( Input::class ) ] );
 					
-					$this->markAsInvoked( $filter, $action );
+					$this->markAsInvoked( $filter );
 					
 				}
 				
@@ -153,7 +153,7 @@
 	     *
 	     * @return void
 	     */
-		protected function markAsInvoked( $callback, $action ) {
+		protected function markAsInvoked( $callback, $action = 1 ) {
 			
 			self::$invoked[$callback] = $action;
 			
