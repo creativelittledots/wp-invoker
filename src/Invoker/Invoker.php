@@ -82,21 +82,7 @@
 			
 				add_action( $action, function() use( $action, $callback ) {
 					
-					if( is_string( $callback ) ) {
-						
-						$callback = $this->prependNamespace( $callback );
-						
-						$filter = implode( '@', [ explode( '@', $callback )[0], 'beforeFilter' ] );
-						
-						if( ! $this->invoked( $filter ) ) {
-					
-							$this->app->call( $filter, [ 'request' => $this->app->make( Input::class ) ] );
-							
-							$this->markAsInvoked( $filter, $action );
-							
-						}
-						
-					}
+					$callback = $this->parseCallback($callback);
 					
 					$this->app->call( $callback, [ 'request' => $this->app->make( Input::class ) ] );
 					
@@ -129,6 +115,34 @@
 				$callback = implode( '@', $parts );
 
 			} 
+			
+			return $callback;
+			
+		}
+		
+		/**
+	     * Parse callback to route string
+	     *
+	     * @param  string  $callback
+	     * @return string
+	     */
+		public function parseCallback( $callback ) {
+			
+			if( is_string( $callback ) ) {
+						
+				$callback = $this->prependNamespace( $callback );
+				
+				$filter = implode( '@', [ explode( '@', $callback )[0], 'beforeFilter' ] );
+				
+				if( ! $this->invoked( $filter ) ) {
+			
+					$this->app->call( $filter, [ 'request' => $this->app->make( Input::class ) ] );
+					
+					$this->markAsInvoked( $filter, $action );
+					
+				}
+				
+			}
 			
 			return $callback;
 			
