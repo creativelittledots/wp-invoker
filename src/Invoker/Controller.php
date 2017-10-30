@@ -83,13 +83,16 @@
     				
     				$extension = ! empty( $info['extension'] ) ? $info['extension'] : ( ! empty( $script['type'] ) ? $script['type'] : false );
     				
+    				$theme = wp_get_theme();
+    				$version = $theme->get('Version') ? $theme->get('Version') : '1.0.0';
+    				
     				switch( $extension ) {
 						
 						case 'css' :
 						
 							$script = array_merge(array(
 								'dependencies' => array(),
-								'version' => '1.0.0',
+								'version' => $version,
 								'media' => 'all',
 								'enqueue' => true
 							), $script, array(
@@ -122,7 +125,7 @@
 						
 							$script = array_merge(array(
 								'dependencies' => array(),
-								'version' => '1.0.0',
+								'version' => $version,
 								'in_footer' => true,
 								'localize' => false,
 								'enqueue' => true
