@@ -151,8 +151,47 @@ class FrontPageController extends Controller {
 		
 	}
 	
+	public function beforeFilter() {
+		
+		add_action( 'woocommerce_thankyou', array($this, 'bigThanks'), 5 );
+		
+		action( 'woocommerce_thankyou', 'smallThanks', 5 );
+		
+		add_filter( 'body_class', array($this, 'addBodyClasses') );
+		
+		filter( 'body_class', 'addMoreBodyClasses' );
+		
+	}
+	
+	public function bigThanks() {
+		
+		echo 'THANKS';
+		
+	}
+	
+	public function smallThanks() {
+		
+		echo 'thanks!';
+		
+	}
+	
+	public function addBodyClasses( $classes ) {
+			
+		$classes[] = 'some-class';
+	
+	    return $classes;
+		
+	}
+	
+	public function addMoreBodyClasses( $classes ) {
+			
+		$classes[] = 'some-other-class';
+	
+	    return $classes;
+		
+	}
+	
 }
-
 ```
 
 ## Get Involved
