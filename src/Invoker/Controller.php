@@ -68,7 +68,7 @@
         public function beforeFilter(Input $request) {
 		
 			// backward compatibility
-			$this->scriptsAction = $this->scripts_action ?: $this->scriptsAction;
+			$this->scriptsAction = property_exists($this, 'scripts_action') ? $this->scripts_action : $this->scriptsAction;
 		
 			add_action( $this->scriptsAction, [$this, 'enqueueScripts'], $this->scriptsPriority );
 	        
