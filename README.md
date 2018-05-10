@@ -117,6 +117,8 @@ This may see back to front in terms of how [```Router::match```](https://github.
 
 ```wp-kit/invoker``` comes shipped with a [```Controller```](https://github.com/wp-kit/invoker/blob/master/src/Invoker/Controller.php) that you can extend too to enable you to benefit from the enqueue scripts feature which helps to reduce the amount of code you need to write to output scripts and styles through ```wp_enqueue_scripts```.
 
+Helpfully, wp-kit comes with two functions to more easily add hooks with reference to the current class. These two functions are `action` and `filter`; these functions fallback to the traditional functions `add_action` and `add_filter` which means they can be used 100% of the time.
+
 ```php
 
 namespace App\Controllers;
