@@ -21,7 +21,12 @@
 	    /**
 	     * @var string
 	     */
-	    protected $scripts_action = 'wp_enqueue_scripts';
+	    protected $scriptsAction = 'wp_enqueue_scripts';
+	    
+	    /**
+	     * @var string
+	     */
+	    protected $scriptsPriority = 10;
         
         /**
         
@@ -62,7 +67,10 @@
 	     */
         public function beforeFilter(Input $request) {
 		
-			add_action( $this->scripts_action, [$this, 'enqueueScripts'] );
+		// backward compatibility
+		$this->scriptsAction = $this->scripts_action ?: $this->scriptsAction;
+		
+			add_action( $this->scriptsAction, [$this, 'enqueueScripts'], $this->scriptsPriority );
 	        
         }
         
