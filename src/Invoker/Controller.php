@@ -3,10 +3,9 @@
     namespace WPKit\Invoker;
     
     use Illuminate\Contracts\Container\Container;
-    use Illuminate\Routing\Controller as BaseController;
     use Illuminate\Support\Facades\Input;
     
-    class Controller extends BaseController {
+    class Controller {
 	    
 	    /**
 	     * @var Illuminate\Contracts\Container\Container
