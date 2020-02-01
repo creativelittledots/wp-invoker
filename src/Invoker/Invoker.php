@@ -3,7 +3,7 @@
     namespace WPKit\Invoker;
     
     use Illuminate\Contracts\Container\Container;
-    use Illuminate\Support\Facades\Input;
+    use Illuminate\Support\Facades\Request;
     
     class Invoker {
 	    
@@ -84,7 +84,7 @@
 					
 					$callback = $this->parseCallback($callback);
 					
-					$this->app->call( $callback, [ 'request' => $this->app->make( Input::class ) ] );
+					$this->app->call( $callback, [ 'request' => $this->app->make( Request::class ) ] );
 					
 				}, $priority );
 				
@@ -136,7 +136,7 @@
 				
 				if( ! $this->invoked( $filter ) ) {
 			
-					$this->app->call( $filter, [ 'request' => $this->app->make( Input::class ) ] );
+					$this->app->call( $filter, [ 'request' => $this->app->make( Request::class ) ] );
 					
 					$this->markAsInvoked( $filter );
 					
