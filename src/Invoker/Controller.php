@@ -3,7 +3,7 @@
     namespace WPKit\Invoker;
     
     use Illuminate\Contracts\Container\Container;
-    use Illuminate\Support\Facades\Input;
+    use Illuminate\Support\Facades\Request;
     
     class Controller {
 	    
@@ -46,7 +46,7 @@
 	     *
 	     * @return void
 	     */
-		public function dispatch(Input $request) {}
+		public function dispatch(Request $request) {}
         
         /**
 	     * Get scripts for controller
@@ -64,7 +64,7 @@
 	     *
 	     * @return void
 	     */
-        public function beforeFilter(Input $request) {
+        public function beforeFilter(Request $request) {
 		
 			// backward compatibility
 			$this->scriptsAction = property_exists($this, 'scripts_action') ? $this->scripts_action : $this->scriptsAction;
