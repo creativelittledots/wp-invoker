@@ -40,6 +40,20 @@
 	        $this->app = $app;
 	        
         }
+        
+        /**
+	     * Register method called before controller is booted
+	     *
+	     * @return void
+	     */
+        public function register(Request $request) {
+		
+			// backward compatibility
+			$this->scriptsAction = property_exists($this, 'scripts_action') ? $this->scripts_action : $this->scriptsAction;
+		
+			add_action( $this->scriptsAction, [$this, 'enqueueScripts'], $this->scriptsPriority );
+	        
+        }
 		
 		/**
 	     * Default controller method when controller is invoked
@@ -56,31 +70,6 @@
         protected function getScripts() {
 	        
 	        return $this->scripts;
-	        
-        }
-	    
-	/**
-	     * Before filter [legacy]
-	     *
-	     * @return void
-	     */
-        public function beforeFilter(Request $request) {
-		
-			$this->register($request);
-	        
-        }
-        
-        /**
-	     * Register method called before controller is booted
-	     *
-	     * @return void
-	     */
-        public function register(Request $request) {
-		
-			// backward compatibility
-			$this->scriptsAction = property_exists($this, 'scripts_action') ? $this->scripts_action : $this->scriptsAction;
-		
-			add_action( $this->scriptsAction, [$this, 'enqueueScripts'], $this->scriptsPriority );
 	        
         }
         
@@ -209,5 +198,27 @@
             return false;
     		
 		}
+	    
+	    /**
+	     * Before filter [legacy]
+	     *
+	     * @return void
+	     */
+        public function beforeFilter(Request $request) {
+		
+			$this->register($request);
+	        
+        }
+	    
+	    /**
+	     * Dispatch [legacy]
+	     *
+	     * @return void
+	     */
+        public function dispatch(Request $request) {
+		
+			$this->boot($request);
+	        
+        }
         
     }
