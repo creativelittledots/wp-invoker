@@ -42,11 +42,11 @@
         }
 		
 		/**
-	     * Default controller action should the controller be invoked
+	     * Default controller method when controller is invoked
 	     *
 	     * @return void
 	     */
-		public function dispatch(Request $request) {}
+		public function boot(Request $request) {}
         
         /**
 	     * Get scripts for controller
@@ -58,13 +58,24 @@
 	        return $this->scripts;
 	        
         }
-        
-        /**
-	     * Before filter method used before every action
+	    
+	/**
+	     * Before filter [legacy]
 	     *
 	     * @return void
 	     */
         public function beforeFilter(Request $request) {
+		
+			$this->register($request);
+	        
+        }
+        
+        /**
+	     * Register method called before controller is booted
+	     *
+	     * @return void
+	     */
+        public function register(Request $request) {
 		
 			// backward compatibility
 			$this->scriptsAction = property_exists($this, 'scripts_action') ? $this->scripts_action : $this->scriptsAction;
