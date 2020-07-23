@@ -76,13 +76,13 @@
 	     */
 		protected function invoke( $callback, $action = 'wp', $priority = 10 ) {
 			
-			$callback = $this->getCallback( $callback );
+			$callback = $this->getBootCallback( $callback );
 			
 			if( ! is_string( $callback ) || ! $this->invoked( $callback ) ) {
 			
 				add_action( $action, function() use( $action, $callback ) {
 					
-					$callback = $this->parseCallback($callback);
+					$callback = $this->registerCallback($callback);
 					
 					$this->app->call( $callback, [ 'request' => $this->app->make( Request::class ) ] );
 					
@@ -121,24 +121,26 @@
 		}
 		
 		/**
-	     * Parse callback to route string
+	     * Register callback to route string
 	     *
 	     * @param  string  $callback
 	     * @return string
 	     */
-		public function parseCallback( $callback ) {
+		public function registerCallback( $callback ) {
 			
 			if( is_string( $callback ) ) {
 						
 				$callback = $this->prependNamespace( $callback );
 				
-				$filter = implode( '@', [ explode( '@', $callback )[0], 'beforeFilter' ] );
+				$method = !empty($this->app['config']['invoker']['register']) ? $this->app['config']['invoker']['register'] : 'beforeFilter';
 				
-				if( ! $this->invoked( $filter ) ) {
+				$register = implode( '@', [ explode( '@', $callback )[0], $method ] );
+				
+				if( ! $this->invoked( $register ) ) {
 			
-					$this->app->call( $filter, [ 'request' => $this->app->make( Request::class ) ] );
+					$this->app->call( $register, [ 'request' => $this->app->make( Request::class ) ] );
 					
-					$this->markAsInvoked( $filter );
+					$this->markAsInvoked( $register );
 					
 				}
 				
@@ -171,17 +173,21 @@
 		}
 	    
 	    /**
-	     * Get callback
+	     * Get boot callback
 	     *
 	     * @return string/closure
 	     */
-	    protected function getCallback( $callback ) {
+	    protected function getBootCallback( $callback ) {
 		    
 	        if ( is_string( $callback ) ) {
+			
+			
 		        
 		        if( strpos($callback, '@') === false ) {
+				
+				$method = !empty($this->app['config']['invoker']['boot']) ? $this->app['config']['invoker']['boot'] : 'dispatch';
 				    
-	            	$callback .= '@dispatch';
+	            	$callback .= "@{$method}";
 	            	
 	            }
 	            
